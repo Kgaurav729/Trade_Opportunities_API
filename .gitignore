@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environments
+env/
+venv/
+.venv/
+
+# Environment Variables
+.env
+*.env
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs & Caches
+*.log
+*.sqlite3
+.cache/
+*.db
+logs/
+*.tmp
+
+# Bytecode & compiled files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Test artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter or Notebook-related (if used)
+.ipynb_checkpoints/
+
+# Deployment
+*.bak
+
