@@ -100,9 +100,9 @@ GET /analyze/{sector}
 
 ## Supported Sector
 
--pharmaceuticals
--technology
--agriculture
+- pharmaceuticals
+- technology
+- agriculture
 
 ## Example
 
