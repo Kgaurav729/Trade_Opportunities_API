@@ -30,5 +30,93 @@ A FastAPI-based service that fetches current news about key Indian sectors, anal
 ### 1. 📂 Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/trade-opportunities-api.git
-cd trade-opportunities-api
+git clone https://github.com/Kgaurav729/Trade_Opportunities_API.git
+
+```
+---
+### 2.Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 3. Set Environment Variables
+
+```bash
+export GEMINI_API_KEY=your_gemini_api_key_here
+```
+---
+
+### 4.Running The App
+```bash
+uvicorn main:app --reload
+
+```
+---
+
+## visit the swagger docs
+
+http://localhost:8000/docs
+
+----
+
+### 5.Authentication
+
+## Login to get the token
+
+```bash
+
+POST /login
+
+Request:
+{
+  "username": "dummyusername",
+  "password": "dummypassword"
+}
+
+Response:
+{
+  "access_token": "your_token_here",
+  "token_type": "bearer"
+}
+```
+ 
+## Use this token in all further requests:
+
+```bash
+Authorization: Bearer your_token_here
+```
+
+
+---
+
+### 4. Analyze the sector
+
+```bash
+GET /analyze/{sector}
+```
+
+## Supported Sector
+
+-pharmaceuticals
+-technology
+-agriculture
+
+## Example
+
+```bash
+curl -H "Authorization: Bearer <token>" \
+ http://localhost:8000/analyze/pharmaceuticals
+
+```
+---
+
+### 5.Rate Limiting
+
+-Max 5 requests per user per 60 seconds.
+-Exceeding the limit returns HTTP 429.
+
+
+
