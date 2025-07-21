@@ -1,18 +1,21 @@
 import time
 from fastapi import HTTPException, status
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Config
-RATE_LIMIT = 5  # Max 5 requests
-TIME_WINDOW = 60  # Per 60 seconds
+RATE_LIMIT = int(os.getenv("RATE_LIMIT"))
+TIME_WINDOW = int(os.getenv("TIME_WINDOW"))
 
-# In-memory store
+
 rate_limits = {}
 
 def rate_limiter(token: str):
     now = time.time()
     timestamps = rate_limits.get(token, [])
 
-    # Keep only timestamps within the time window
     timestamps = [ts for ts in timestamps if now - ts < TIME_WINDOW]
 
     if len(timestamps) >= RATE_LIMIT:
@@ -21,6 +24,5 @@ def rate_limiter(token: str):
             detail="Rate limit exceeded. Try again later."
         )
 
-    # Update timestamps and save
     timestamps.append(now)
     rate_limits[token] = timestamps
